@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { ref } from "vue"
+import { onUnmounted, ref } from "vue"
 import { getTimeSection, getStatistics } from "@/api/cv"
 import * as echarts from 'echarts/core';
 import {
@@ -125,6 +125,10 @@ export default {
             })
         }
 
+        onUnmounted(() => {
+            window.removeEventListener("resize", myChart.value.resize)
+        })
+
         return {
             loading,
             selected,
@@ -166,10 +170,7 @@ export default {
             window.addEventListener("resize", this.myChart.resize)
         })
         
-    },
-    unmounted() {
-        window.removeEventListener("resize", this.myChart.resize)
-    }   
+    }
 }
 </script>
 
