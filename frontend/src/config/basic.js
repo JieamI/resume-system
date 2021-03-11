@@ -13,4 +13,6 @@ const Config = {
 	// DingAppSecret: "ccBS_06R4SFXSevbHCKrQco2aQzLVGavH3AkAjeUWuQwt3KK-RxmI5Nw_PK9HLe6"
 }
 
+// Config.FrontDomain = "http://token.vaiwan.com/login"
+
 export default Config

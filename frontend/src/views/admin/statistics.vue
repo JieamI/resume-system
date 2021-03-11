@@ -1,5 +1,5 @@
 <template>
-    <a-skeleton active :paragraph="{ rows: 16 }" :loading="loading">
+    <!-- <a-skeleton active :paragraph="{ rows: 16 }" :loading="loading"> -->
         <div class="container">
             <div class="selector-area">
                 <div class="content">
@@ -35,7 +35,7 @@
             <div id="pie-area"></div>
             
         </div>
-    </a-skeleton>
+    <!-- </a-skeleton> -->
 </template>
 
 <script>
@@ -59,7 +59,7 @@ echarts.use(
 
 export default {
     setup() {
-        const loading = ref(true)
+        // const loading = ref(true)
         const myChart = ref()
 
         const list_data = ref({})
@@ -83,7 +83,6 @@ export default {
                 type: 'pie',
                 radius: ["17%", "50%"],
                 center: ["50%", "30%"],
-                // roseType: "area",
                 label: {
                     show: false,
                     position: 'center'
@@ -103,8 +102,6 @@ export default {
             }]
         })
         
-        
-
         const selectList = ref([])
         const selected = ref("")
 
@@ -130,7 +127,7 @@ export default {
         })
 
         return {
-            loading,
+            // loading,
             selected,
             handleSelected,
             selectList,
@@ -162,13 +159,13 @@ export default {
         }else {
             this.pie_data.push({name: "无数据", value: 0})
         }
-        this.loading = false
+        // this.loading = false
 
-        this.$nextTick(() => {
-            this.myChart = echarts.init(document.getElementById("pie-area"))
-            this.myChart.setOption(this.option)
-            window.addEventListener("resize", this.myChart.resize)
-        })
+        
+        this.myChart = echarts.init(document.getElementById("pie-area"))
+        this.myChart.setOption(this.option)
+        window.addEventListener("resize", this.myChart.resize)
+        
         
     }
 }
