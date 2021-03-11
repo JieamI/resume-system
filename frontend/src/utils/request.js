@@ -36,7 +36,7 @@ service.interceptors.request.use(
         }else {
         // 如果没有token则取消当前请求并移除本地存储路由到登录页面
             // cancel()
-            window.localStorage.removeItem("userInfo")
+            // window.localStorage.removeItem("userInfo")
             router.push("/login")
         }
     

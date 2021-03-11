@@ -102,6 +102,7 @@ export default {
             }]
         })
         
+
         const selectList = ref([])
         const selected = ref("")
 
@@ -161,11 +162,11 @@ export default {
         }
         // this.loading = false
 
-        
-        this.myChart = echarts.init(document.getElementById("pie-area"))
-        this.myChart.setOption(this.option)
-        window.addEventListener("resize", this.myChart.resize)
-        
+        this.$nextTick(() => {
+            this.myChart = echarts.init(document.getElementById("pie-area"))
+            this.myChart.setOption(this.option)
+            window.addEventListener("resize", this.myChart.resize)
+        })
         
     }
 }

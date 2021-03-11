@@ -14,5 +14,7 @@ const Config = {
 }
 
 // Config.FrontDomain = "http://token.vaiwan.com/login"
+// Config.FrontDomain = "http://localhost:8000/api"
+
 
 export default Config
