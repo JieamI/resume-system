@@ -231,7 +231,7 @@ async def sendEmail(
 # 获取时间片段
 @router.get("/timesection")
 async def getTimeSection(
-    current_user: Dict = Security(get_current_user, scopes = ["user", "administrator", "supervisor"]),
+    # current_user: Dict = Security(get_current_user, scopes = ["user", "administrator", "supervisor"]),
 ):
     section = []
     cvList = await crud_cv.select_by(
@@ -264,7 +264,7 @@ async def getTimeSection(
 async def getStatistics(
     start: str,
     end: str,
-    current_user: Dict = Security(get_current_user, scopes = ["user", "administrator", "supervisor"]),
+    # current_user: Dict = Security(get_current_user, scopes = ["user", "administrator", "supervisor"]),
 ):
     # 兼容末尾判断
     end = end + "1"
