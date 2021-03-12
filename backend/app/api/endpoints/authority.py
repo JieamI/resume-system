@@ -18,6 +18,7 @@ router = APIRouter()
 async def getAuthInfo(
     current_user: Dict = Security(get_current_user, scopes = ["administrator", "supervisor"])
 ) -> Dict:
+    data = []
     if "supervisor" in eval(current_user["role"]):
         res = await crud_user.select_by(
             User.c.role.notlike("%supervisor%")
