@@ -1,7 +1,9 @@
 from typing import Dict
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm, SecurityScopes
-import jwt
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer  
+
+# import jwt
 
 from core.config import settings
 from models import User
@@ -23,8 +25,15 @@ class ValidateAuth:
         token: str = Depends(oauth2_scheme)
     ) -> Dict:
         try:
-            token_decode = jwt.decode(token, settings.SECRET_KEY, algorithms = settings.ALGORITHM)
+            # token_decode = jwt.decode(token, settings.SECRET_KEY, algorithms = settings.ALGORITHM)
+            # openid = token_decode["openid"]
+            s = Serializer(
+                secret_key = settings.SECRET_KEY,
+                expires_in = settings.TOKEN_EXPIRE_Time
+            )
+            token_decode = s.loads(token)
             openid = token_decode["openid"]
+            
         except Exception as e:
             # 出现异常则为token过期
             print(e)

@@ -1,4 +1,4 @@
-import secrets
+# import secrets
 from typing import Dict, List
 from fastapi import status, HTTPException
 from pydantic import BaseSettings, EmailStr
@@ -13,11 +13,11 @@ class Settings(BaseSettings):
     ACCESS_APPSECRET: str = "xhgolkRUphy07oM6f9se79ebyn18RYU0DHHWWToxWy7PRIfo0Sw13on90DxN2G-C"
     
     # 密钥及算法配置
-    SECRET_KEY: str = secrets.token_urlsafe(32)
-    ALGORITHM: str = "HS256"
+    SECRET_KEY: str = "1UYVW_JGdEG6UoRnN6zuNdGqxPju9oJLi4OxHlJxyn4"
+    # ALGORITHM: str = "HS256"
 
-    # Token相关配置
-    TOKEN_EXPIRE_DAYS: int = 7
+    # Token相关配置(s)
+    TOKEN_EXPIRE_Time: int = 604800
     
     # 跨域配置
     BACKEND_CORS_ORIGINS: List[str] = ["*"]
