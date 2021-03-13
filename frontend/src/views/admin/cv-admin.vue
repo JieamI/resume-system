@@ -325,8 +325,6 @@ export default {
                         return pre + item.score
                     }, 0)
                     averageScore.value = Math.round(total / commentList.value.length)
-                }).catch(() => {
-                    message.error("面试评价获取失败")
                 })
             infoRecord.value = record
             infoVisible.value = true
@@ -388,7 +386,7 @@ export default {
         const exportOk = () => {
             if(!rowSelection.selectedRows.value.length) {
                 message.warn("至少选中一个简历")
-                mailVisible.value = false
+                exportVisible.value = false
                 return
             }
             toCsv(rowSelection.selectedRows.value)
