@@ -1,19 +1,40 @@
 export function toCsv(data) {
-    // 由第一项取得各列标题
-    let columns = Object.keys(data[0])
-    // 去除sign和comment字段
-    columns.splice(columns.indexOf("sign"), 1)
-    columns.splice(columns.indexOf("comment"), 1)
+    let field = new Map([
+        ["学号", "sno"],
+        ["姓名", "name"],
+        ["性别", "sex"],
+        ["生日", "birthday"],
+        ["籍贯", "hometown"],
+        ["民族", "nation"],
+        ["学院", "college"],
+        ["年级", "grade"],
+        ["专业班级", "proclass"],
+        ["宿舍", "dormitory"],
+        ["手机", "phone"],
+        ["QQ", "qq"],
+        ["邮箱", "mail"],
+        ["自我介绍", "introduce"],
+        ["加入理由", "reason"],
+        ["个人经历", "experience"],
+    ])
+    let text = [...field.keys()].join(",") + "\n"
 
-    let text = columns.join(",") + "\n"
     for(let i = 0; i < data.length; i++) {
         // eslint-disable-next-line no-unused-vars
-        let { sign, comment, ...others }  = data[i] 
-        for(let item in others) {
-            text += `${others[item]},`
+        let item = data[i]
+        for(let val of field.values()) {
+            let content = item[val].trim()
+            if(content.includes("\n")) content = content.replace(/\n/g," ")
+            
+            if(content.includes('"')) content = content.replace(/"/g, '""')
+
+            if(content.includes(",")) content = `"${content}"`
+            
+            text += `${content},`
         }
         text += "\n"
     }
+    
     let blob = new Blob([text], { type: "text/plain;charset=utf-8" })  
     blob = new Blob([String.fromCharCode(0xFEFF), blob], { type: blob.type })
     let url = window.URL.createObjectURL(blob)

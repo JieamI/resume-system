@@ -11,7 +11,17 @@ module.exports = {
     lintOnSave: process.env.NODE_ENV === "development",
     productionSourceMap: false,
     devServer: {
-        disableHostCheck: true
+        disableHostCheck: true,
+        proxy: {
+            "/api": {
+                target: "https://recruit.itoken.team",
+                changOrigin: true,
+                // pathRewrite: {
+                //     "^/api": ""
+                // }
+
+            }
+        }
     },
     configureWebpack: {
         name: "Token招新系统",
