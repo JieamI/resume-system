@@ -107,7 +107,7 @@ export default {
         const router = useRouter()
         const handleLogout = () => {
             window.localStorage.removeItem("userInfo")
-            router.push("/login")
+            router.push("/login/super")
         }
 
         // 部门状态按钮切换逻辑

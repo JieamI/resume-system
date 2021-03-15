@@ -48,8 +48,14 @@ class Settings(BaseSettings):
     }
 
     # 超级管理员账号密码配置
-    SUPERVISOR_USERNAME: str = "token" 
-    SUPERVISOR_PASSWORD: str = "nekot" 
+    SUPERVISOR_USERNAME: str = "supervisor" 
+    SUPERVISOR_PASSWORD: str = "supervisor"
+
+    ADMINISTRATOR_USERNAME: str = "administrator" 
+    ADMINISTRATOR_PASSWORD: str = "administrator"
+
+    USER_USERNAME: str = "user"
+    USER_PASSWORD: str = "user"
 
     # 邮箱发送服务配置
     USERNAME_MAIL: EmailStr = "2577438164@qq.com"

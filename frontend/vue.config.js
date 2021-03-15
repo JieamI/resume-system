@@ -14,12 +14,8 @@ module.exports = {
         disableHostCheck: true,
         proxy: {
             "/api": {
-                target: "https://recruit.itoken.team",
+                target: "http://localhost:8000",
                 changOrigin: true,
-                // pathRewrite: {
-                //     "^/api": ""
-                // }
-
             }
         }
     },

@@ -7,6 +7,7 @@ const constantRoutes = [{
     component: () => import(/* webpackChunkName: "CommonLogin" */ "../views/login/common-login.vue")
 },{
     path: "/superlogin",
+    name: "superlogin",
     component: () => import(/* webpackChunkName: "SuperLogin" */ "../views/login/super-login.vue")
 },{
     path: "/admin",
@@ -39,7 +40,7 @@ const constantRoutes = [{
     }]
   },{
     path: "/:param(.*)",
-    redirect: { name: "login" }
+    redirect: { name: "superlogin" }
 }]
 
 

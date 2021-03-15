@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine, MetaData, event
 
 from core.config import settings
-from .init_db import init_dept, init_user, cvinfo_trigger, record_trigger, dept_trigger
+from .init_db import init_dept, init_user, init_cv, init_record, cvinfo_trigger, record_trigger, dept_trigger
 from .session import database
 
 
@@ -16,7 +16,8 @@ event.listen(models.CvInfo, "after_create", cvinfo_trigger)
 
 event.listen(models.Department, "after_create", init_dept)
 event.listen(models.User, "after_create", init_user)
-
+event.listen(models.CvInfo, "after_create", init_cv)
+event.listen(models.Record, "after_create", init_record)
 
 
 engine = create_engine(settings.DATABASE_URI)

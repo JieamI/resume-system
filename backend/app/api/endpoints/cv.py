@@ -303,17 +303,17 @@ async def getStatistics(
     } 
 
 
-# import random
-# @router.get("/test")
-# async def test():
-#     m = [i for i in range(3, 5)]
-#     d = [i for i in range(1, 31)]
-#     h = [i for i in range(0, 24)]
-#     ms = [i for i in range(0, 60)]
-#     for i in range(0, 20):
-#         await crud_cv.update(
-#             condition = CvInfo.c.nation == str(i),
-#             time = "2021-%02d-%02d %02d:%02d:%02d" %(random.choice(m),random.choice(d),random.choice(h),random.choice(ms),random.choice(ms))
-#         )
+import random
+@router.get("/changetime")
+async def test():
+    m = [i for i in range(3, 5)]
+    d = [i for i in range(1, 31)]
+    h = [i for i in range(0, 24)]
+    ms = [i for i in range(0, 60)]
+    for i in range(0, 20):
+        await crud_cv.update(
+            condition = CvInfo.c.sno == "%013d" %(i),
+            time = "2021-%02d-%02d %02d:%02d:%02d" %(random.choice(m),random.choice(d),random.choice(h),random.choice(ms),random.choice(ms))
+        )
 
-#     return 0
+    return 0

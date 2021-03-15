@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Body, Security
 from core import utils, security
 from crud import crud_user
 from models import User
-from core.depends import get_current_user, validate_supervisor
+from core.depends import get_current_user, validate_auth
 from schemas.login import LoginResponse, UpdateResponse
 
 router = APIRouter()
@@ -38,7 +38,7 @@ async def handleCommonLogin(code: str = Body(..., embed = True)) -> Dict:
    
 
 @router.post("/super", response_model = LoginResponse)
-async def handleSuperLogin(supervisor: Dict = Depends(validate_supervisor)) -> Dict:
+async def handleSuperLogin(supervisor: Dict = Depends(validate_auth)) -> Dict:
     openid = supervisor["openid"]
     scopes = eval(supervisor["role"])
     department = supervisor["department"]
