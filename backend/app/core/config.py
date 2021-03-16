@@ -1,4 +1,4 @@
-# import secrets
+import secrets
 from typing import Dict, List
 from fastapi import status, HTTPException
 from pydantic import BaseSettings, EmailStr
@@ -7,13 +7,13 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api"
 
     # 钉钉扫码登录配置
-    APP_ID: str = "dingoalrnidom4p3khixr0"
-    APP_SECRET: str = "QNDiNQbWbJfiLLuTkR523G8VDRT79Geo-2VplHBEZVJqOKQ62mE8v03lySvPRpoT" 
-    ACCESS_APPKEY: str = "dingit4vuspgz8jk7pce"
-    ACCESS_APPSECRET: str = "xhgolkRUphy07oM6f9se79ebyn18RYU0DHHWWToxWy7PRIfo0Sw13on90DxN2G-C"
+    APP_ID: str = "xxxxxxxxxxxxx"
+    APP_SECRET: str = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
+    ACCESS_APPKEY: str = "xxxxxxxxxxxxxxxxxxxxxx"
+    ACCESS_APPSECRET: str = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     
     # 密钥及算法配置
-    SECRET_KEY: str = "1UYVW_JGdEG6UoRnN6zuNdGqxPju9oJLi4OxHlJxyn4"
+    SECRET_KEY: str = secrets.token_urlsafe(32)
     # ALGORITHM: str = "HS256"
 
     # Token相关配置(s)
@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     MYSQL_HOST: str = "localhost"
     MYSQL_PORT: str = "3306"
     MYSQL_USER: str = "root"
-    MYSQL_PASSWORD: str = "^tokenjoin$"
+    MYSQL_PASSWORD: str = "tokenjoinsql"
     DATABASE_URI: str = f"mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_NAME}?charset=utf8"
 
     # HTTP错误配置
@@ -59,7 +59,7 @@ class Settings(BaseSettings):
 
     # 邮箱发送服务配置
     USERNAME_MAIL: EmailStr = "2577438164@qq.com"
-    PASSWORD_MAIL: str = "gifixtxgcwadeajb"
+    PASSWORD_MAIL: str = "xxxxxxxxxxxxxx"
 
     class Config:
         case_sensitive = True
