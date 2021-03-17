@@ -23,11 +23,11 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[str] = ["*"]
 
     # mysql服务器配置
-    MYSQL_NAME: str = "TokenJoinSql"
-    MYSQL_HOST: str = "localhost"
+    MYSQL_NAME: str = "tokenjoinsql"
+    MYSQL_HOST: str = "mysql"
     MYSQL_PORT: str = "3306"
     MYSQL_USER: str = "root"
-    MYSQL_PASSWORD: str = "tokenjoinsql"
+    MYSQL_PASSWORD: str = "root"
     DATABASE_URI: str = f"mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_NAME}?charset=utf8"
 
     # HTTP错误配置
