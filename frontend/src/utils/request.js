@@ -37,7 +37,7 @@ service.interceptors.request.use(
         // 如果没有token则取消当前请求并移除本地存储路由到登录页面
             // cancel()
             // window.localStorage.removeItem("userInfo")
-            router.push("/login")
+            router.push("/superlogin")
         }
     
         return config
@@ -69,7 +69,7 @@ error => {
         message.error(error.response.data.detail)
         if(error.response.status == 401) {
             window.localStorage.removeItem("userInfo")
-            router.push("/login")
+            router.push("/superlogin")
         }
     }
     return Promise.reject(error)

@@ -1,4 +1,5 @@
 const path = require("path")
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -26,14 +27,28 @@ module.exports = {
             "@": resolve("src")
             }
         },
-        devtool: "source-map"
+        devtool: "source-map",
+        // plugins: [
+        //     new MiniCssExtractPlugin({})
+        // ],
+        // module: {
+        //     rules: [
+        //         {
+        //             test: /\.css$/,
+        //             use: [{
+        //                 loader: MiniCssExtractPlugin.loader
+        //             }]
+        //         }
+        //     ]
+        // }
+
     },
     chainWebpack(config) {
     config.plugin("preload").tap(() => [
         {
-        rel: "preload",
-        fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
-        include: "initial"
+            rel: "preload",
+            fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
+            include: "initial"
         }
     ])
 
