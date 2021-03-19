@@ -21,6 +21,6 @@ event.listen(models.Record, "after_create", init_record)
 
 
 engine = create_engine(settings.DATABASE_URI)
-# metadata.drop_all(engine)
+metadata.drop_all(engine)
 metadata.create_all(engine) 
 
